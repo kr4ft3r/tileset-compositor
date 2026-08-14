@@ -4,7 +4,7 @@
 
 Check sample scenes to get the idea or use as base. Use Godot editor for creating a scene, and ingame window (`F5`) for exporting image ('Space' or 'Enter' while in game view).
 
-I have quickly doodled a sample tree and bush objects and have managed to create an auto-tiling tileset within an hour, you can see it in action by opening the scene `samples/sample-tileset.tscn`. The sprites don't look great, but I can make them nicer later and the graphics will update in all tiles, and that is the purpose of this tool - smart objects that update when their base texture gets modified.
+I have quickly doodled a sample tree and bush objects and have managed to create an auto-tiling tileset within an hour, you can see it in action by opening the scene `samples/sample-tileset.tscn`. The sprites don't look great, but I can make them nicer later and the graphics will update in all tiles, and that is the purpose of this tool - smart objects that update when their base texture gets modified. And optional Y-sorting.
 
 ![sample map with autotiling tiles](docs/fullscale-tilemap-sample.png)
 
