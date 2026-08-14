@@ -6,6 +6,8 @@ Check sample scenes to get the idea or use as base. Use Godot editor for creatin
 
 I have quickly doodled a sample tree and bush objects and have managed to create an auto-tiling tileset within an hour, you can see it in action by opening the scene `samples/sample-tileset.tscn`.
 
+![sample map with autotiling tiles](docs/fullscale-tilemap-sample.png)
+
 ## What Is It?
 
 Tileset Compositor is a Godot 4 project that includes scenes, scripts, and samples. It is meant to be used from the editor, with occasinal running of the game in order to use the export function.
