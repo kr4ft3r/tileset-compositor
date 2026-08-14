@@ -73,3 +73,5 @@ Now that you have the image you can use it as source for Godot's tileset or modi
 
 ![sample autotiling tileset](docs/map.png)
 
+The lower half of the tileset example above serves only to compose four inner corner tiles, the surrounding tiles will not be used as that space is only used for surrounding objects that make the corner tiles semaless in the remaining 7 direction. If you care about resource usage you will probably want to move the actual tile squares into a new image where everything will be packed together. In that case the new image will be the tileset source instead.
+
