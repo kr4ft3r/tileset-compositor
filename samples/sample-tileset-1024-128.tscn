@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c575i87vtm4iu"]
 
-[ext_resource type="PackedScene" uid="uid://c5iln55g23hjl" path="res://samples/instances/Sample128Tree.tscn" id="1_3e47g"]
+[ext_resource type="PackedScene" uid="uid://c5iln55g23hjl" path="res://samples/props/Sample128Tree.tscn" id="1_3e47g"]
 [ext_resource type="Texture2D" uid="uid://tyoixxfojya6" path="res://tileset-compositor/ui/grid-1024-128.png" id="2_wsjf0"]
-[ext_resource type="PackedScene" uid="uid://dnmgyknag0kdu" path="res://samples/instances/Sample64Bush.tscn" id="3_tfrov"]
+[ext_resource type="PackedScene" uid="uid://dnmgyknag0kdu" path="res://samples/props/Sample64Bush.tscn" id="3_tfrov"]
 
 [node name="SampleScene1" type="Node2D" unique_id=569646037]
 metadata/_edit_lock_ = true

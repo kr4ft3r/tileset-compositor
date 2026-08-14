@@ -70,3 +70,6 @@ The project is configured so that the `RenderingViewport` in the `main` scene de
 To export the image press `F5` to run the "game" and then press `Enter` or `Space` key. Check logs to see the image file's location (this will be improved). Ignore what you see with in-game camera, it is the viewport that will get rendered. There was an idea to use in-game camera as a walkable 1:1 preview of the image but I am a new Godot user and was unable to make it work (and it is not really a crucial feature).
 
 Now that you have the image you can use it as source for Godot's tileset or modify the image further in other software to make it prettier or to optimize for spritesheet space.
+
+![sample autotiling tileset](docs/map.png)
+
