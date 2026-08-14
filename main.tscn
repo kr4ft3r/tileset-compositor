@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://by62ktinwcepx"]
+
+[ext_resource type="PackedScene" uid="uid://c575i87vtm4iu" path="res://samples/sample-tileset-1024-128.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://dh8mqem6ote6u" path="res://tileset-compositor/src/exporter.gd" id="2_0xm2m"]
+
+[node name="Main" type="Node2D" unique_id=447857143]
+
+[node name="RenderingViewport" type="SubViewport" parent="." unique_id=1852676231]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(2048, 2048)
+render_target_update_mode = 4
+script = ExtResource("2_0xm2m")
+
+[node name="Graphics - insert your own" type="Node" parent="RenderingViewport" unique_id=642591258]
+
+[node name="SampleTileset1024128" parent="RenderingViewport/Graphics - insert your own" unique_id=569646037 instance=ExtResource("1_ig7tw")]
+
+[node name="ExportCamera" type="Camera2D" parent="RenderingViewport" unique_id=1699569393]

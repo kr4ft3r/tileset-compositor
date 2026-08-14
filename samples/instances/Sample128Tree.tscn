@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c5iln55g23hjl"]
+
+[ext_resource type="Texture2D" uid="uid://7htgvqr3akdw" path="res://samples/sample-128-tree.png" id="1_210fv"]
+
+[node name="Sample128Tree" type="Node2D" unique_id=1084457854]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=577700325]
+texture = ExtResource("1_210fv")
+offset = Vector2(0, -64)
