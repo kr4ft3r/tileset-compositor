@@ -52,6 +52,8 @@ The project only has sample graphics, you should import your own trees, rocks, b
 1. Export your individual objects from your graphic software as images and import them as sprite textures.
 2. Decide how you will use them as objects - either just drag&drop images themselves (in which case they will still be objects as sprites and auto-update if you change the source texture) or turn them into scenes first, perhaps by duplicating one of the `base...` objects and replacing the sprite and offset. The scene approach is preferable as you should set your sprites offset so that its bottom part is where the wrapping node's center is, this will make automatic Y-sorting feel more natural.
 
+### Composing and exporting the image
+
 #### Composing the scene: proposed workflow for tilesets
 
 While the specifics of the scene creation are up to you, the following would be the recommended workflow for tileset creation.
@@ -63,7 +65,7 @@ While the specifics of the scene creation are up to you, the following would be 
 
 #### Exporting the PNG image
 
-The project is configured so that the `RenderingViewport` in the `main` scene decides what goes into the image and its dimensions.
+The project is configured so that the `RenderingViewport` in the `main` scene decides what goes into the image and its dimensions. Keep in mind that the composition scene that you worked on must be child of the `RenderingViewport`. If you used any grid overlay you will probaly want to make it invisible now.
 
 To export the image press `F5` to run the "game" and then press `Enter` or `Space` key. Check logs to see the image file's location (this will be improved). Ignore what you see with in-game camera, it is the viewport that will get rendered. There was an idea to use in-game camera as a walkable 1:1 preview of the image but I am a new Godot user and was unable to make it work (and it is not really a crucial feature).
 
