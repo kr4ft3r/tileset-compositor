@@ -8,7 +8,15 @@ I have quickly doodled a sample tree and bush objects and have managed to create
 
 ![sample map with autotiling tiles](docs/fullscale-tilemap-sample.png)
 
+## Requirements and Recommended Settings
+
+- Godot 4.7.1 or higher
+- Integer positioning to keep it pixel-perfect (three vertical dots among toolbar's snapping options, enable `Use Pixel Snap`)
+- Keep the texture filtering off (`Project Settings->Rendering->Textures` keep `Default Texture Filter` at `Nearest`)
+
 ## What Is It?
+
+The tool's two main purposes are creation of tilesets and orthogonal top down art. It cannot be used for actual drawing of pixel art (unless with some Godot plugins), the main idea is to compose the image using sprites.
 
 Tileset Compositor is a Godot 4 project that includes scenes, scripts, and samples. It is meant to be used from the editor, with occasinal running of the game in order to use the export function.
 
@@ -33,6 +41,8 @@ The basic idea is you will import your individual graphical objects as textures 
 #### Configure output image
 
 Decide what the target image is, project's default is 1024x1024px. Open the `main` scene that is in `res` root and update the `RenderingViewport`: under its `SubViewport` options set x and y `size` to your desired export format.
+
+TODO: image name and path configuration
 
 #### Prepare the "canvas"
 
@@ -59,7 +69,7 @@ The project only has sample graphics, you should import your own trees, rocks, b
 While the specifics of the scene creation are up to you, the following would be the recommended workflow for tileset creation.
 
 1. Create a structure similar to the scene `sample-tileset-1024-128`. That one is made for tileset image of size 1024px with 128px cell size, has `Ordering->Y-Sorting Enabled` enabled for the Node2d that parents all layers, has three "layers" (parenting nodes) - Background (ground), Foreground (things on ground), and Sky (things above things on ground), is using a matching grid sprite, and has all parent nodes locked to prevent accidental moving. You will adjust all these according to your needs.
-2. Start adding objects. This is the part that is a bit rough, in Godot you cannot just click-paint objects onto a single parent layer (or at least I don't know the way). You can drag&drop an object out of your library into the scene view and it should automatically become child of the currently selected node, but if you drag&drop again the next object will become child of the previous object which became automatically selected when you dropped it in, and you don't want that. The most reliable way to add objects quickly is to duplicate the ones that are already in the scene (right click in the hierarchy view and select `Duplicate`.
+2. Start adding objects. This is the part that is a bit rough, might be improved with scripts later. In Godot you cannot just click-paint objects onto a single parent layer (or at least I don't know the way). You can drag&drop an object out of your library into the scene view and it should automatically become child of the currently selected node, but if you drag&drop again the next object will become child of the previous object which became automatically selected when you dropped it in, and you don't want that. The most reliable way to add objects quickly is to duplicate the ones that are already in the scene (right click in the hierarchy view and select `Duplicate`.
 3. If you are doing tiles make sure they are seamless. This is hard work that requires good deal of brain power in order to keep in mind which tile should be seamless with which other tiles. This all depends on how your tileset will work. In the sample scene `sample-tileset-...` is a functional seamless terrain tileset that is able to auto-tile and supports inner and outer corners. Making tiles seamless involves making sure that each object which crosses a left-or-right side must have a duplicate on X axis, and each object that crosses a top-or-bottom side must have a duplicate on Y axis, meaning that each object which crosses both vertical and horizontal sides must have four instances in total, one pair for each axis. And this must be done with pixel perfection. It sounds like very hard work but I have managed to create the sample tileset within an hour by starting with the middle one that has connections to all 8 directions and mostly copy-pasting the rest. The limitation of the sample auto-tiling terrain is that a line of tiles must be at least 2 tiles wide. You may apply a more advanced system, this is just what I was happy with. The resulting auto-tiling terrain can be seen in its test map `sample-tilemap.tscn`, you may try painting the tiles yourself.
 4. Making auto-tiling tile variations in the described way ends up occupying a lot of space, in case of the sample tileset the group of trees at the bottom half serve only to create four inner corner tiles, while all the surrounding tiles are just occupying the space that won't be used in the tileset, they only serve to create illusion of looping. This is why you might want to export the result (F5 to run the game and press `space` or `enter` to export image) and then cut out the squares that you will actually use and move them into a new file that can use the space in a more optimal way.
 
