@@ -17,3 +17,4 @@ script = ExtResource("2_0xm2m")
 [node name="SampleTileset1024128" parent="RenderingViewport/Graphics - insert your own" unique_id=569646037 instance=ExtResource("1_ig7tw")]
 
 [node name="ExportCamera" type="Camera2D" parent="RenderingViewport" unique_id=1699569393]
+limit_enabled = false

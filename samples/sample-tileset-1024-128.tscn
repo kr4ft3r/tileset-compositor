@@ -93,7 +93,7 @@ position = Vector2(-369, -136)
 position = Vector2(-241, -136)
 
 [node name="Sample64Bush14" parent="Foreground" unique_id=1123341008 instance=ExtResource("3_tfrov")]
-position = Vector2(-295, -129)
+position = Vector2(-295, -135)
 
 [node name="Sample64Bush15" parent="Foreground" unique_id=909750 instance=ExtResource("3_tfrov")]
 position = Vector2(-316, -145)
@@ -229,9 +229,6 @@ position = Vector2(-369, -136)
 
 [node name="Sample64Bush51" parent="Foreground" unique_id=798446915 instance=ExtResource("3_tfrov")]
 position = Vector2(-241, -136)
-
-[node name="Sample64Bush52" parent="Foreground" unique_id=1983008695 instance=ExtResource("3_tfrov")]
-position = Vector2(-295, -129)
 
 [node name="Sample64Bush53" parent="Foreground" unique_id=347036113 instance=ExtResource("3_tfrov")]
 position = Vector2(-316, -145)
@@ -606,7 +603,7 @@ position = Vector2(-497, 120)
 position = Vector2(-369, 120)
 
 [node name="Sample64Bush120" parent="Foreground" unique_id=1933742673 instance=ExtResource("3_tfrov")]
-position = Vector2(-423, 127)
+position = Vector2(-416, 127)
 
 [node name="Sample64Bush121" parent="Foreground" unique_id=1839673756 instance=ExtResource("3_tfrov")]
 position = Vector2(-444, 111)
@@ -688,9 +685,6 @@ position = Vector2(-497, 120)
 
 [node name="Sample64Bush139" parent="Foreground" unique_id=1348018700 instance=ExtResource("3_tfrov")]
 position = Vector2(-369, 120)
-
-[node name="Sample64Bush140" parent="Foreground" unique_id=1616980177 instance=ExtResource("3_tfrov")]
-position = Vector2(-423, 127)
 
 [node name="Sample64Bush141" parent="Foreground" unique_id=1858946651 instance=ExtResource("3_tfrov")]
 position = Vector2(-444, 111)
@@ -780,7 +774,7 @@ position = Vector2(-167, 127)
 position = Vector2(-188, 111)
 
 [node name="Sample64Bush162" parent="Foreground" unique_id=2070403515 instance=ExtResource("3_tfrov")]
-position = Vector2(-272, 124)
+position = Vector2(-272, 115)
 
 [node name="Sample64Bush163" parent="Foreground" unique_id=1244668496 instance=ExtResource("3_tfrov")]
 position = Vector2(-144, 124)
@@ -862,9 +856,6 @@ position = Vector2(-167, 127)
 
 [node name="Sample64Bush181" parent="Foreground" unique_id=1412829479 instance=ExtResource("3_tfrov")]
 position = Vector2(-188, 111)
-
-[node name="Sample64Bush182" parent="Foreground" unique_id=1357744049 instance=ExtResource("3_tfrov")]
-position = Vector2(-272, 124)
 
 [node name="Sample64Bush183" parent="Foreground" unique_id=218981087 instance=ExtResource("3_tfrov")]
 position = Vector2(-144, 124)
