@@ -16,7 +16,7 @@ I have quickly doodled a sample tree and bush objects and have managed to create
 
 ## What Is It?
 
-The tool's two main purposes are creation of tilesets and orthogonal top down art. It cannot be used for actual drawing of pixel art (unless with some Godot plugins), the main idea is to compose the image using sprites.
+The tool's two main purposes are creation of tilesets and orthogonal top down art. It cannot be used for actual drawing of pixel art (unless with some Godot plugins), the main idea is to compose an image using sprites.
 
 Tileset Compositor is a Godot 4 project that includes scenes, scripts, and samples. It is meant to be used from the editor, with occasinal running of the game in order to use the export function.
 
