@@ -89,9 +89,11 @@ The lower half of the tileset example above serves only to compose four inner co
 
 ### Seamlessness Tools
 
-The first tile of a tileset should probably be the one seamless to itself in all directions. In terms of the Tileset Compositor's purpose, seamlessness means that if any pixels of a sprite are crossing one of horizontal edges then there should be a duplicate on Y axis so that the pixels that are outside of the tile loop back on the other side. And same for vertical edges and X axis. If both vertical and horizontal edges are crossed, an additional third duplicate is required.
+The first terrain tile that you create should probably be the one seamless to itself in all directions. In terms of the Tileset Compositor's purpose, seamlessness means that if any pixels of a sprite are crossing one of horizontal edges then there should be a duplicate on Y axis so that the pixels that are outside of the tile loop back on the other side. And same for vertical edges and X axis. If both vertical and horizontal edges are crossed, an additional third duplicate is required.
 
 While this can be achieved by manually duplicating and positioning duplicates while matching pixels against the grid line, such work takes seconds or minutes, which may accumulate into hours. For this reason I have added scripts which make duplicating objects automatic, and can also help if you later wish to reposition the objects a bit.
+
+![sample autotiling tileset](docs/map.png)
 
 #### Requirements for using Seamlessness Tools
 
