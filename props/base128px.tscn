@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://ddc1cc2cu85nv"]
 
 [ext_resource type="Texture2D" uid="uid://7htgvqr3akdw" path="res://samples/sample-128-tree.png" id="1_ih4g0"]
+[ext_resource type="Script" uid="uid://8cy3s562rrmp" path="res://tileset-compositor/src/tc_composition_element.gd" id="1_r81xr"]
 
 [node name="Base128" type="Node2D" unique_id=1084457854]
+script = ExtResource("1_r81xr")
+seamlesness_info = null
+was_x_duplicated = null
+was_y_duplicated = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=577700325]
 texture = ExtResource("1_ih4g0")

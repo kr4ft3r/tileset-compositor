@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://cst0avv53ew8h"]
 
 [ext_resource type="Texture2D" uid="uid://d2qq2q78suun4" path="res://samples/sample-64-bush.png" id="1_0fasa"]
+[ext_resource type="Script" uid="uid://8cy3s562rrmp" path="res://tileset-compositor/src/tc_composition_element.gd" id="1_ja4vw"]
 
 [node name="Base64" type="Node2D" unique_id=1084457854]
+script = ExtResource("1_ja4vw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=577700325]
 texture = ExtResource("1_0fasa")

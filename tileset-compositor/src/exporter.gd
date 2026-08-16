@@ -1,5 +1,7 @@
+class_name TCExporter
 extends SubViewport
 
+@export_category("Export Settings")
 @export_global_dir var target_directory:String = "user://"
 @export var image_file_name:String = "tileset.png"
 

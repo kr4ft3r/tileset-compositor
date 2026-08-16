@@ -20,7 +20,7 @@ The tool's two main purposes are creation of tilesets and orthogonal top down ar
 
 Tileset Compositor is a Godot 4 project that includes scenes, scripts, and samples. It is meant to be used from the editor, with occasinal running of the game in order to use the export function.
 
-It allows you to compose an image using the equivalent of "smart objects", which is to say instanced sprites that will auto-update if you update the graphics of their base texture.
+It allows you to compose an image using the equivalent of "smart objects", which is to say instanced sprites that will auto-update if you update the graphics of their base texture. There is also implementation of tools that help with making seamless tiles, see the **Seamlessness Tools** section.
 
 With the added benefit of being able to turn on Y-ordering for these sprites (they will be drawn in front of other sprites that are higher on Y axis) this becomes a useful tool for composing tilesets with large and complex tiles that are made of several graphical objects.
 
@@ -50,9 +50,9 @@ The `RenderingViewport` must be parent to all graphical elements that will appea
 
 To keep it clean I suggest you only use other scenes in there. The project starts with a `SampleTileset` scene, you should replace it with your own and then do all the graphical editing inside that scene. 
 
-The `SampleTileset` scene is showing a suggested setup, with three layers of containers (background, foreground, sky) all having Y-sorting turned on (very important) and locked for editing. It also has a grid object that can be made visible.
+The `SampleTileset` scene is showing a suggested setup, with TCTilesetParent script attached to the top node, three layers of containers (background, foreground, sky) all having Y-sorting turned on (very important) and locked for editing. It also has a grid object that you will make visible whenever you need it and probably hide when exporting the image.
 
-1. Create a new scene that will do something similar and add a grid of appropriate cell size (if what you are making is a tileset), some pre-made grids are available in the project. Remember to make grid invisible if you are exporting the image.
+1. Create a new scene that will do something similar and attach the TCTilesetParent script if you will use Seamlessness Tools. Add a grid of appropriate cell size (if what you are making is a tileset), some pre-made grids are available in the project. Remember to make the grid invisible if you are exporting the image.
 2. Add the scene that you have just created as a child to the `RenderingViewport->Graphics` node in the `main` scene. From now on you should leave the `main` scene alone, unless you want to make some wide adjustment.
 
 #### Importing graphics: proposed Workflow
@@ -60,7 +60,7 @@ The `SampleTileset` scene is showing a suggested setup, with three layers of con
 The project only has sample graphics, you should import your own trees, rocks, buildings, people, whatever are the elements that you will use to compose the final image.
 
 1. Export your individual objects from your graphic software as images and import them as sprite textures.
-2. Decide how you will use them as objects - either just drag&drop images themselves (in which case they will still be objects as sprites and auto-update if you change the source texture) or turn them into scenes first, perhaps by duplicating one of the `base...` objects and replacing the sprite and offset. The scene approach is preferable as you should set your sprites offset so that its bottom part is where the wrapping node's center is, this will make automatic Y-sorting feel more natural.
+2. Decide how you will use them as objects - either just drag&drop images themselves (**not recommended**) or turn them into scenes first, perhaps by duplicating one of the `base...` objects and replacing the sprite and offset. If you are making a tileset then you should really attach the `TCCompositionElement` script to the parent and have the sprite as a direct child. This will allow you to use Seamlessness Tools described below. Another reason the scene approach is preferable is because you can set your sprites offset in the scene so that its bottom part is where the wrapping node's center is, which will make automatic Y-sorting feel more natural.
 
 ### Composing and exporting the image
 
@@ -70,7 +70,7 @@ While the specifics of the scene creation are up to you, the following would be 
 
 1. Create a structure similar to the scene `sample-tileset-1024-128`. That one is made for tileset image of size 1024px with 128px cell size, has `Ordering->Y-Sorting Enabled` enabled for the Node2d that parents all layers, has three "layers" (parenting nodes) - Background (ground), Foreground (things on ground), and Sky (things above things on ground), is using a matching grid sprite, and has all parent nodes locked to prevent accidental moving. You will adjust all these according to your needs.
 2. Start adding objects. You probably do not want to use drag&drop approach. The preferred way is to paint objects by selecting the node that serves as the layer and then switching to Godot's *Scene Paint Mode* (brush icon next to the Select pointer icon in top toolbard). Things will be much harder if you use drag&drop approach instead of the scene paint mode as the objects that you drop will rarely be parented to the correct layer.
-3. If you are doing tiles make sure they are seamless. This is hard work that requires good deal of brain power in order to keep in mind which tile should be seamless with which other tiles. This all depends on how your tileset will work. In the sample scene `sample-tileset-...` is a functional seamless terrain tileset that is able to auto-tile and supports inner and outer corners. Making tiles seamless involves making sure that each object which crosses a left-or-right side must have a duplicate on X axis, and each object that crosses a top-or-bottom side must have a duplicate on Y axis, meaning that each object which crosses both vertical and horizontal sides must have four instances in total, one pair for each axis. And this must be done with pixel perfection. It sounds like very hard work but I have managed to create the sample tileset within an hour by starting with the middle one that has connections to all 8 directions and mostly copy-pasting the rest. The limitation of the sample auto-tiling terrain is that a line of tiles must be at least 2 tiles wide. You may apply a more advanced system, this is just what I was happy with. The resulting auto-tiling terrain can be seen in its test map `sample-tilemap.tscn`, you may try painting the tiles yourself.
+3. If you are doing tiles make sure they are seamless. This project includes in-editor tools to make some parts of the task easier (see Seamlessness Tools section). This is hard work that requires good deal of brain power in order to keep in mind which tile should be seamless with which other tiles. This all depends on how your tileset will work. In the sample scene `sample-tileset-...` is a functional seamless terrain tileset that is able to auto-tile and supports inner and outer corners. Making tiles seamless involves making sure that each object which crosses a left-or-right side must have a duplicate on X axis, and each object that crosses a top-or-bottom side must have a duplicate on Y axis, meaning that each object which crosses both vertical and horizontal sides must have four instances in total, one pair for each axis. And this must be done with pixel perfection. It sounds like very hard work but I have managed to create the sample tileset within an hour by starting with the middle one that has connections to all 8 directions and mostly copy-pasting the rest. The limitation of the sample auto-tiling terrain is that a line of tiles must be at least 2 tiles wide. You may apply a more advanced system, this is just what I was happy with. The resulting auto-tiling terrain can be seen in its test map `sample-tilemap.tscn`, you may try painting the tiles yourself.
 4. Making auto-tiling tile variations in the described way ends up occupying a lot of space, in case of the sample tileset the group of trees at the bottom half serve only to create four inner corner tiles, while all the surrounding tiles are just occupying the space that won't be used in the tileset, they only serve to create illusion of looping. This is why you might want to export the result (F5 to run the game and press `space` or `enter` to export image) and then cut out the squares that you will actually use and move them into a new file that can use the space in a more optimal way.
 
 #### Exporting the PNG image
@@ -84,4 +84,37 @@ Now that you have the image you can use it as source for Godot's tileset or modi
 ![sample autotiling tileset](docs/map.png)
 
 The lower half of the tileset example above serves only to compose four inner corner tiles, the surrounding tiles will not be used as that space is only used for surrounding objects that make the corner tiles semaless in the remaining 7 direction. If you care about resource usage you will probably want to move the actual tile squares into a new image where everything will be packed together. In that case the new image will be the tileset source instead.
+
+## Helpful Features
+
+### Seamlessness Tools
+
+The first tile of a tileset should probably be the one seamless to itself in all directions. In terms of the Tileset Compositor's purpose, seamlessness means that if any pixels of a sprite are crossing one of horizontal edges then there should be a duplicate on Y axis so that the pixels that are outside of the tile loop back on the other side. And same for vertical edges and X axis. If both vertical and horizontal edges are crossed, an additional third duplicate is required.
+
+While this can be achieved by manually duplicating and positioning duplicates while matching pixels against the grid line, such work takes seconds or minutes, which may accumulate into hours. For this reason I have added scripts which make duplicating objects automatic, and can also help if you later wish to reposition the objects a bit.
+
+#### Requirements for using Seamlessness Tools
+
+1. Your tileset is parented by Node2D which has `TCTilesetParent` script attached.
+2. Your graphical elements are sprites directly parented to a Node2D which has `TCCompositionElement` script attached.
+3. The `TCTilesetParent` has configurations field set correctly.
+4. Your sprites are not larger than one tile in any one dimension and two in the other dimension. So they may be maximum of two tiles tall and one tile wide, OR two tiles wide and one tile tall.
+
+Missing some of the requirements may not break the scripts but seamlessness will not be giving proper results.
+
+#### Workflow with Seamlessness Tools
+
+1. Add an element to a layer or choose an existing one. Are any of the pixels crossing into neighboring tile? Then you should use the tool.
+2. In inspector of the TCCompositionElement expand the **Tileset Seamlessness Options**
+3. Click the **Duplicate Seamless** button and it should create either one or three more duplicates, depending on what is needed for seamless tile. Notice that some of the read-only fields have now changed.
+
+This should be enough to make this particular element in the tile seamless, same procedure should be done for any other such element. Notice that most of the operations will provide some output in console, so if something seems wrong check the output tab.
+
+#### Additional features of Seamlessness Tools
+
+- If you wish to move a seamless object you have to move its duplicates as well. You can click the **Select Duplicates** button (on either the original or a duplicated object) to add all the duplicates to the selection. This is probably useful for other things as well.
+- You can erase seamlessness data by clicking the **Clear Seamlessness Data** button. This will only clear all the read-only fields without affecting anything else.
+- You can erase both the seamlessness data and the created duplicates by selecting the original object and clicking the **Clear and Delete Duplicates**. At the moment there is no undo for this operation.
+
+
 
