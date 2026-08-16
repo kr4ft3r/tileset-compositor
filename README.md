@@ -40,9 +40,9 @@ The basic idea is you will import your individual graphical objects as textures 
 
 #### Configure output image
 
-Decide what the target image is, project's default is 1024x1024px. Open the `main` scene that is in `res` root and update the `RenderingViewport`: under its `SubViewport` options set x and y `size` to your desired export format.
+Decide the target image dimensions, project's default is 1024x1024px. Open the `main` scene that is in `res` root and update the `RenderingViewport`: under its `SubViewport` options set x and y `size` to your desired export format.
 
-TODO: image name and path configuration
+Decide the export location and file name. The same `RenderingViewport` also provides `Target Directory` and `Image File Name` inputs to control the output target, provided by the `Exporter` script.
 
 #### Prepare the "canvas"
 
@@ -77,7 +77,7 @@ While the specifics of the scene creation are up to you, the following would be 
 
 The project is configured so that the `RenderingViewport` in the `main` scene decides what goes into the image and its dimensions. Keep in mind that the composition scene that you worked on must be child of the `RenderingViewport`. If you used any grid overlay you will probaly want to make it invisible now.
 
-To export the image press `F5` to run the "game" and then press `Enter` or `Space` key. Check logs to see the image file's location (this will be improved). Ignore what you see with in-game camera, it is the viewport that will get rendered. There was an idea to use in-game camera as a walkable 1:1 preview of the image but I am a new Godot user and was unable to make it work (and it is not really a crucial feature).
+To export the image press `F5` to run the "game" and then press `Enter` or `Space` key. Check logs to see the image file's location (you can configure the target location in options attached to the `RenderingViewport`. Ignore what you see with in-game camera, it is the viewport that will get rendered. There was an idea to use in-game camera as a walkable 1:1 preview of the image but I am a new Godot user and was unable to make it work (and it is not really a crucial feature).
 
 Now that you have the image you can use it as source for Godot's tileset or modify the image further in other software to make it prettier or to optimize for spritesheet space.
 
