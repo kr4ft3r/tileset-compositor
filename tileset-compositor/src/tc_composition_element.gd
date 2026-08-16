@@ -15,9 +15,8 @@ var duplicate_seamless_button = _on_duplicate_seamless_button_pressed
 ## Will be true if Duplicate Seamless button was used and duplicate was made on vertical axis.
 @export var was_y_duplicated:bool = false
 @export var horizontal_duplicate:TCCompositionElement = null
-@export var horizontal_2_duplicate:TCCompositionElement = null
 @export var vertical_duplicate:TCCompositionElement = null
-@export var vertical_2_duplicate:TCCompositionElement = null
+@export var horizontal_2_duplicate:TCCompositionElement = null
 ## Clear all duplication data, use if data is not valid for whatever reason
 @export_tool_button("Clear Seamlessness Data", "Clear")
 var clear_seamlessness_data_button = _clear_seamlessness_data
@@ -52,8 +51,6 @@ func select_duplicates() -> void:
 		selection.add_node(horizontal_2_duplicate)
 	if vertical_duplicate: 
 		selection.add_node(vertical_duplicate)
-	if vertical_2_duplicate: 
-		selection.add_node(vertical_2_duplicate)
 	
 func _clear_seamlessness_data(delete_linked_objects:bool = false) -> void:
 	var had_data = false
@@ -80,11 +77,6 @@ func _clear_seamlessness_data(delete_linked_objects:bool = false) -> void:
 		unlinked.append(vertical_duplicate)
 		print("Unlinked from vertical duplicate 1 " + vertical_duplicate.name)
 		vertical_duplicate = null
-		had_data = true
-	if vertical_2_duplicate:
-		unlinked.append(vertical_2_duplicate)
-		print("Unlinked from vertical duplicate 2 " + vertical_2_duplicate.name)
-		vertical_2_duplicate = null
 		had_data = true
 	if !had_data:
 		print("There was no duplicate data to clear")
@@ -176,7 +168,6 @@ func _duplicate(pos:Vector2) -> TCCompositionElement:
 	elem.horizontal_duplicate = null
 	elem.horizontal_2_duplicate = null
 	elem.vertical_duplicate = null
-	elem.vertical_2_duplicate = null
 	
 	elem.is_duplicated_from = self
 
@@ -189,6 +180,6 @@ func _on_clear_and_delete_linked_objects_button_pressed() -> void:
 func _validate_property(property: Dictionary) -> void:
 	var readonly_fields:Array = ["seamlessness_info", 
 	"is_duplicated_from", "was_x_duplicated", "was_y_duplicated",
-	"horizontal_duplicate", "horizontal_2_duplicate", "vertical_duplicate", "vertical_2_duplicate"]
+	"horizontal_duplicate", "horizontal_2_duplicate", "vertical_duplicate"]
 	if readonly_fields.count(property.name) > 0:
 		property.usage |= PROPERTY_USAGE_READ_ONLY
