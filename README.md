@@ -93,7 +93,7 @@ The first terrain tile that you create should probably be the one seamless to it
 
 While this can be achieved by manually duplicating and positioning duplicates while matching pixels against the grid line, such work takes seconds or minutes, which may accumulate into hours. For this reason I have added scripts which make duplicating objects automatic, and can also help if you later wish to reposition the objects a bit.
 
-![sample autotiling tileset](docs/map.png)
+![sample seamlessness](docs/seamlessness-tool-screenshot.png)
 
 #### Requirements for using Seamlessness Tools
 
